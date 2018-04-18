@@ -9,7 +9,7 @@ import com.java.hiro.ormamvc.BuildConfig;
 public class ActiveModel {
     public OrmaDatabase orma;
 
-    public ActiveModel(Context context) {
+    ActiveModel(Context context) {
         this.orma = OrmaDatabase.builder(context)
             .name("main2.db") // default: "${applicationId}.orma.db"
             .readOnMainThread(AccessThreadConstraint.NONE)

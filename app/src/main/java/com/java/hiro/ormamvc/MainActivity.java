@@ -1,14 +1,10 @@
 package com.java.hiro.ormamvc;
 
-import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.view.ViewGroup;
 
-import com.github.gfx.android.orma.example.Todo;
-import com.github.gfx.android.orma.example.Todo_Selector;
-
-import com.java.hiro.ormamvc.models.TodoModel;
+import com.java.hiro.ormamvc.controllers.TodoController;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,21 +13,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Context context = this;
-        TodoModel todoModel = new TodoModel(context);
+        ViewGroup textGroup = (ViewGroup) findViewById(R.id.layout);
 
-        Todo tmp_todo = new Todo();
-        tmp_todo.title = "test";
-        tmp_todo.content = "test";
+        TodoController todoController = new TodoController(this, textGroup);
+        todoController.create();
 
-        todoModel.insert(tmp_todo);
-
-        TextView textView = (TextView) findViewById(R.id.textview);
-
-        Todo_Selector selector = todoModel.selectAll();
-
-        for (Todo todo : selector) {
-            textView.append(todo.title);
-        }
+        todoController.index();
     }
 }
