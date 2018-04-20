@@ -13,9 +13,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ViewGroup textGroup = (ViewGroup) findViewById(R.id.layout);
+        ViewGroup viewGroup = (ViewGroup) findViewById(R.id.layout);
 
-        TodoController todoController = new TodoController(this, textGroup);
+        TodoController todoController = new TodoController(viewGroup);
         todoController.create();
 
         todoController.index();

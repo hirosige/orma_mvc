@@ -1,22 +1,20 @@
 package com.java.hiro.ormamvc.controllers;
 
-import android.content.Context;
 import android.view.ViewGroup;
 
 import com.github.gfx.android.orma.example.Todo;
 import com.github.gfx.android.orma.example.Todo_Selector;
-import com.java.hiro.ormamvc.helpers.TodoHelper;
 import com.java.hiro.ormamvc.models.TodoModel;
 import com.java.hiro.ormamvc.views.todos.Index;
 
 public class TodoController extends AppController {
 
-    public TodoController(Context context, ViewGroup viewGroup) {
-        super(context, viewGroup, new TodoHelper());
+    public TodoController(ViewGroup viewGroup) {
+        super(viewGroup);
     }
 
     public void index() {
-        TodoModel todoModel = new TodoModel(this.context);
+        TodoModel todoModel = new TodoModel();
         Todo_Selector selector = todoModel.selectAll();
 
         (new Index(selector, view)).draw();
@@ -27,7 +25,7 @@ public class TodoController extends AppController {
     }
 
     public void create() {
-        TodoModel todoModel = new TodoModel(this.context);
+        TodoModel todoModel = new TodoModel();
 
         // Todo 本来はViewから取得した値 Start
         Todo todo = new Todo();
